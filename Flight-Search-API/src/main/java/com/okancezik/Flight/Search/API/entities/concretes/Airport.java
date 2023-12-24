@@ -1,10 +1,13 @@
 package com.okancezik.Flight.Search.API.entities.concretes;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,4 +27,10 @@ public class Airport {
 	
 	@Column(name = "city")
 	private String city;
+	
+	@OneToMany(mappedBy = "departureAirport" )
+	private List<Flight> departingFlights;
+
+	@OneToMany(mappedBy = "arrivalAirport")
+	private List<Flight> arrivingFlights;
 }

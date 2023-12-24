@@ -1,7 +1,8 @@
 package com.okancezik.Flight.Search.API.entities.concretes;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,21 +29,21 @@ public class Flight {
 	@Column(name = "id")
 	private int ID;
 	
-	@ManyToOne
-	@JoinColumn(name = "departure_airport_id")
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "departure_airport_id", referencedColumnName = "id")
 	private Airport departureAirport;
 	 
-	@ManyToOne
-	@JoinColumn(name = "arrival_airport_id") 
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "arrival_airport_id", referencedColumnName = "id") 
 	private Airport arrivalAirport;
 	
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "departure_datetime")
-    private Date departureDateTime;
+    private LocalDateTime departureDateTime;
     
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "return_datetime")
-    private Date returnDateTime;
+    private LocalDateTime returnDateTime;
     
     @Column(name = "price")
     private double price;

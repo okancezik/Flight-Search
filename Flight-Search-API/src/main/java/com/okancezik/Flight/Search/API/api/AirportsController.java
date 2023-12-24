@@ -23,7 +23,7 @@ import com.okancezik.Flight.Search.API.core.results.SuccessDataResult;
 
 @RestController
 @RequestMapping("/api/v1/airport")
-public class AirportsApi {
+public class AirportsController {
 	
 	@Autowired
 	private AirportService airportService;
